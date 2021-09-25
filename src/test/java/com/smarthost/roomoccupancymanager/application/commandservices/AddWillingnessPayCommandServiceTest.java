@@ -1,6 +1,7 @@
 package com.smarthost.roomoccupancymanager.application.commandservices;
 
 import com.smarthost.roomoccupancymanager.domain.WillingnessPayRepository;
+import com.smarthost.roomoccupancymanager.domain.exceptions.RoomOccupancyManagerException;
 import com.smarthost.roomoccupancymanager.domain.models.WillingnessPay;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,6 +13,10 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(value = {SpringExtension.class})
@@ -36,4 +41,9 @@ class AddWillingnessPayCommandServiceTest {
         assertThat(willingnessPay.getPrices().contains(expectedResult.getPrices()));
     }
 
+    @Test
+    void givenInvalidPriceList_whenAddWillingnessPay_thenThrowRoomOccupancyManagerException(){
+        when(repository.add(null)).thenThrow(new RuntimeException());
+        assertThrows(RoomOccupancyManagerException.class,()->addWillingnessPayCommandService.addWillingnessPay(null));
+    }
 }
