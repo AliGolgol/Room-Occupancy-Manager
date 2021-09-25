@@ -1,6 +1,5 @@
 package com.smarthost.roomoccupancymanager.infrastructure.repositories;
 
-import com.smarthost.roomoccupancymanager.domain.WillingnessPayRepository;
 import com.smarthost.roomoccupancymanager.domain.models.WillingnessPay;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
