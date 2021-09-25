@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RoomOccupancyTest {
 
-
     RoomOccupancy roomOccupancy;
     private List<Double> willingnessPayPerNight = new ArrayList<>();
 

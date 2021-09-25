@@ -1,19 +1,16 @@
 package com.smarthost.roomoccupancymanager.application.dtos;
 
 public class ReservationResult {
-    private int economyOccupiedRooms;
     private int premiumOccupiedRooms;
-    private double economyRoomsRevenue;
     private double premiumRoomsRevenue;
+    private int economyOccupiedRooms;
+    private double economyRoomsRevenue;
 
-    ReservationResult(final int economyOccupiedRooms,
-                      final int premiumOccupiedRooms,
-                      final double economyRoomsRevenue,
-                      final double premiumRoomsRevenue) {
-        this.economyOccupiedRooms = economyOccupiedRooms;
+    public ReservationResult(int premiumOccupiedRooms, double premiumRoomsRevenue, int economyOccupiedRooms, double economyRoomsRevenue) {
         this.premiumOccupiedRooms = premiumOccupiedRooms;
-        this.economyRoomsRevenue = economyRoomsRevenue;
         this.premiumRoomsRevenue = premiumRoomsRevenue;
+        this.economyOccupiedRooms = economyOccupiedRooms;
+        this.economyRoomsRevenue = economyRoomsRevenue;
     }
 
     public int getEconomyOccupiedRooms() {
@@ -34,11 +31,11 @@ public class ReservationResult {
 
     @Override
     public String toString() {
-        return "BookingForecastResult{" +
-                "economyOccupiedRooms=" + economyOccupiedRooms +
-                ", premiumOccupiedRooms=" + premiumOccupiedRooms +
-                ", economyRoomsRevenue=" + economyRoomsRevenue +
+        return "ReservationResult{" +
+                "premiumOccupiedRooms=" + premiumOccupiedRooms +
                 ", premiumRoomsRevenue=" + premiumRoomsRevenue +
+                ", economyOccupiedRooms=" + economyOccupiedRooms +
+                ", economyRoomsRevenue=" + economyRoomsRevenue +
                 '}';
     }
 }
