@@ -8,8 +8,14 @@ import java.util.List;
 
 @Repository
 public class WillingnessPayRepositoryImpl implements WillingnessPayRepository {
+
     @Override
     public WillingnessPay add(List<Double> prices) {
+        return null;
+    }
+
+    @Override
+    public WillingnessPay getAll() {
         return null;
     }
 }

@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface WillingnessPayRepository {
     WillingnessPay add(List<Double> prices);
+    WillingnessPay getAll();
 }
