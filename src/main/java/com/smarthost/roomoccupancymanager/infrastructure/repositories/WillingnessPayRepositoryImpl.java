@@ -14,6 +14,7 @@ public class WillingnessPayRepositoryImpl implements WillingnessPayRepository {
 
     @Override
     public WillingnessPay add(List<Double> prices) {
+        priceList.clear();
         priceList.addAll(prices);
         WillingnessPay willingnessPay = new WillingnessPay(priceList);
         return willingnessPay;
