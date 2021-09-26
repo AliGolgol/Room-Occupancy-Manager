@@ -41,7 +41,7 @@ class RoomOccupancyControllerTest {
         when(commandService.addWillingnessPay(willingnessList)).thenReturn(expectedResult);
 
         mockMvc.perform(post(POST_ENDPOINT).contentType(APPLICATION_JSON).content(gson.toJson(willingnessList)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
     }
 
     @Test
