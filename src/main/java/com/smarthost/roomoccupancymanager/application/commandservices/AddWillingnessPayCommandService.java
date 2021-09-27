@@ -16,6 +16,11 @@ public class AddWillingnessPayCommandService {
     @Autowired
     WillingnessPayRepository repository;
 
+    /**
+     * Adding WillingnessPay list to the repository.
+     * @param list is a {@link List<Double>}
+     * @return a {@link WillingnessPay}
+     */
     public WillingnessPay addWillingnessPay(List<Double> list) {
         try {
             return repository.add(list);
