@@ -1,7 +1,10 @@
 package com.smarthost.roomoccupancymanager.application.dtos;
 
-import java.util.Objects;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
+@EqualsAndHashCode
+@ToString
 public class ReservationResult {
     private int premiumOccupiedRooms;
     private double premiumRoomsRevenue;
@@ -29,28 +32,5 @@ public class ReservationResult {
 
     public double getPremiumRoomsRevenue() {
         return premiumRoomsRevenue;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ReservationResult that = (ReservationResult) o;
-        return premiumOccupiedRooms == that.premiumOccupiedRooms && Double.compare(that.premiumRoomsRevenue, premiumRoomsRevenue) == 0 && economyOccupiedRooms == that.economyOccupiedRooms && Double.compare(that.economyRoomsRevenue, economyRoomsRevenue) == 0;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(premiumOccupiedRooms, premiumRoomsRevenue, economyOccupiedRooms, economyRoomsRevenue);
-    }
-
-    @Override
-    public String toString() {
-        return "ReservationResult{" +
-                "premiumOccupiedRooms=" + premiumOccupiedRooms +
-                ", premiumRoomsRevenue=" + premiumRoomsRevenue +
-                ", economyOccupiedRooms=" + economyOccupiedRooms +
-                ", economyRoomsRevenue=" + economyRoomsRevenue +
-                '}';
     }
 }
