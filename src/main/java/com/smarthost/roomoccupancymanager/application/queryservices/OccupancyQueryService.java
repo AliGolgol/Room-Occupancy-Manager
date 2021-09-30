@@ -4,7 +4,6 @@ import com.smarthost.roomoccupancymanager.application.dtos.ReservationResult;
 import com.smarthost.roomoccupancymanager.domain.RoomOccupancy;
 import com.smarthost.roomoccupancymanager.domain.WillingnessPayRepository;
 import com.smarthost.roomoccupancymanager.domain.exceptions.RoomOccupancyManagerException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import static com.smarthost.roomoccupancymanager.domain.exceptions.ErrorCode.INVALID_INPUT;
@@ -12,8 +11,11 @@ import static com.smarthost.roomoccupancymanager.domain.exceptions.ErrorCode.INV
 @Service
 public class OccupancyQueryService {
 
-    @Autowired
-    WillingnessPayRepository repository;
+    private final WillingnessPayRepository repository;
+
+    public OccupancyQueryService(WillingnessPayRepository repository) {
+        this.repository = repository;
+    }
 
     /**
      * It validates and retrieve WillingnessPay from repository.
@@ -25,8 +27,7 @@ public class OccupancyQueryService {
     public ReservationResult predictReservation(int freePremiumRooms, int freeEconomyRooms){
         validateInput(freePremiumRooms,freeEconomyRooms);
         RoomOccupancy roomOccupancy =new RoomOccupancy(repository.getAll().getPrices());
-        ReservationResult reservationResult = roomOccupancy.predictReservation(freePremiumRooms, freeEconomyRooms);
-        return reservationResult;
+        return roomOccupancy.predictReservation(freePremiumRooms, freeEconomyRooms);
     }
 
     /**
