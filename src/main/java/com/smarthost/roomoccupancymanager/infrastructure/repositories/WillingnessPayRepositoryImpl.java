@@ -4,25 +4,27 @@ import com.smarthost.roomoccupancymanager.domain.WillingnessPayRepository;
 import com.smarthost.roomoccupancymanager.domain.models.WillingnessPay;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @Repository
 public class WillingnessPayRepositoryImpl implements WillingnessPayRepository {
+    private final List<Double> priceList;
 
-    List<Double> priceList = new ArrayList<>();
+    public WillingnessPayRepositoryImpl() {
+        priceList = new CopyOnWriteArrayList<>();
+    }
+
 
     @Override
-    public WillingnessPay add(List<Double> prices) {
+    public synchronized WillingnessPay add(List<Double> prices) {
         priceList.clear();
         priceList.addAll(prices);
-        WillingnessPay willingnessPay = new WillingnessPay(priceList);
-        return willingnessPay;
+        return new WillingnessPay(priceList);
     }
 
     @Override
     public WillingnessPay getAll() {
-        WillingnessPay willingnessPay = new WillingnessPay(priceList);
-        return willingnessPay;
+        return new WillingnessPay(priceList);
     }
 }
